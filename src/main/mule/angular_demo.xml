@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3cc2dd28-6b09-4466-abc7-5fbc787ee3d9" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="angular_demoFlow" doc:id="7460294d-936a-41f4-b568-52f8ce7d8e93" >
+		<http:listener doc:name="Listener" doc:id="01a10916-dfd8-4f9b-9851-72283177016a" config-ref="HTTP_Listener_config" path="/*"/>
+		<http:load-static-resource doc:name="Load static resource" doc:id="a053e461-89df-4831-890a-a099f6d038e6" resourceBasePath="${mule.home}/apps/${app.name}/demo-app/"/>
+		<logger level="INFO" doc:name="Logger" doc:id="03b2c00d-4ced-483c-9cfa-7a82852a1a56" />
+	</flow>
+</mule>
